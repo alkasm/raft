@@ -1,0 +1,5 @@
+.mypy_cache
+.vscode
+venv/
+**/__pycache__/
+**/.DS_Store
