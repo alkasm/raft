@@ -2,8 +2,6 @@ import enum
 import logging
 import typing
 
-logging.basicConfig(level=logging.INFO)
-
 
 class Role(enum.Enum):
     FOLLOWER = 0
@@ -250,14 +248,4 @@ def send_all(msg: RaftMessage, from_node_id: int):
         nodes[node_id].recv(msg)
 
 
-nodes = {i: Node(i) for i in range(5)}
-for i, n in nodes.items():
-    print(i, n.role)
-nodes[0].promote()
-for i, n in nodes.items():
-    print(i, n.role)
-for i, n in nodes.items():
-    print(i)
-    n.broadcast(BroadcastMessage({"node": i}))
-for i, n in nodes.items():
-    print("Node", i, "has log with entries", *(entry.message for entry in n.log))
+nodes = {}
